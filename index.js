@@ -21,9 +21,9 @@ app.use(cookieParser(keys.cookieKey));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(upload());
-
+console.log(keys.DB_NAME)
 mongoose
-  .connect("mongodb+srv://hoatep:hoatep@cluster0.mhetp.mongodb.net/DevLibrary?retryWrites=true&w=majority", {
+  .connect(`mongodb+srv://${keys.DB_USER}:${keys.DB_PASSWORD}@cluster0.mhetp.mongodb.net/${keys.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
