@@ -23,7 +23,7 @@ app.use(passport.session());
 app.use(upload());
 
 mongoose
-  .connect(`${keys.DBURL}`, {
+  .connect(keys.DBURL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
