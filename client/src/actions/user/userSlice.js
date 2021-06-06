@@ -55,7 +55,6 @@ export const addToCart = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.log(err);
-      console.log("Error when add to cart", err.response.data);
       return rejectWithValue(err.response.data);
     }
   }
@@ -68,7 +67,7 @@ export const updateCart = createAsyncThunk(
       const res = await axios.post("/api/updateCart", { id, amount });
       return res.data;
     } catch (err) {
-      console.log("Error when update cart");
+      console.log(err);
     }
   }
 );

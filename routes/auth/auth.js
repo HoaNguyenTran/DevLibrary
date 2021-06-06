@@ -96,7 +96,7 @@ router.get("/user", async (req, res) => {
       try {
         const { refreshToken } = req.signedCookies;
         const _id = await verifyRefreshToken(refreshToken, keys.REFRESH_TOKEN);
-        console.log("Create new accessToken");
+        
         const { username, email, thumbnail, cart } = await User.findById(_id);
         const userData = {
           _id,
@@ -156,10 +156,8 @@ router.post("/signup", authSignup, async (req, res) => {
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log(error);
       return res.status(400).json(`Error when send email to ${email}`);
     } else {
-      console.log("Email sent: " + info.response);
       return res.json(`Email has been sent to ${email}`);
     }
   });
@@ -209,7 +207,6 @@ router.post("/login", async (req, res) => {
     setCookie(res, "refreshToken", refreshToken, 365);
     res.json(userData);
   } catch (err) {
-    console.log(err, "line 249 auth.js");
     res.status(400).json(err);
   }
 });

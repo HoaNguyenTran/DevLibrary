@@ -13,7 +13,6 @@ router.post("/upload", async (req, res) => {
     return res.status(400).json("Please choose file");
   }
   try {
-    console.log(req.files.file);
     let { name, data } = req.files.file;
     name = Date.now() + name;
     data = data.toString("base64");
@@ -30,7 +29,6 @@ router.post("/upload", async (req, res) => {
     await User.findByIdAndUpdate(_id, { thumbnail: path });
     return res.json("Image uploaded");
   } catch (err) {
-    console.log(err, "Error upload image");
     return res.status(400).json("Can't upload image, please try again");
   }
 });
@@ -101,7 +99,6 @@ router.post("/purchase", async (req, res) => {
     }
     return res.json(user.cart);
   } catch (err) {
-    console.log(err, "error line 104 user.js");
     res.clearCookie("usersession");
     res.clearCookie("refreshToken");
     return res.status(401).json("Can't purchase goods now, please re-login");
@@ -128,7 +125,7 @@ router.post("/updateCart", async (req, res) => {
     );
     return res.json(user.cart);
   } catch (err) {
-    console.log(err, "line 127 user.js");
+    res.json(err.response.data);
   }
 });
 
@@ -151,7 +148,6 @@ router.delete("/deleteCart", async (req, res) => {
     );
     return res.json(user.cart);
   } catch (err) {
-    console.log(err, "deleteCart func user.js");
     res.json(err.response.data);
   }
 });

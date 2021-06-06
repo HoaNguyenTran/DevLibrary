@@ -55,7 +55,6 @@ const Header = (props) => {
       !ref.current.contains(e.target)
     ) {
       setActiveAccount(false);
-      console.log("dispatch");
     }
   };
   useEffect(() => {
