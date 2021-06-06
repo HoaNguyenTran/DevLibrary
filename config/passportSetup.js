@@ -72,10 +72,8 @@ passport.use(
           email: profile._json.email,
         });
         await newUser.save();
-        console.log("Created new user via google");
         done(null, newUser);
       } catch (err) {
-        console.log("Error when create user google oauth", err);
         return done(err);
       }
     }
