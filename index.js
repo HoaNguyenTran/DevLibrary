@@ -23,7 +23,7 @@ app.use(passport.session());
 app.use(upload());
 
 mongoose
-  .connect(`${keys.DBURL}`, {
+  .connect("mongodb+srv://hoatep:hoatep@cluster0.mhetp.mongodb.net/DevLibrary?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
